@@ -12,7 +12,7 @@ When we publish the docker images for use in deployment, we do not want to inclu
 
 Also, when in local development, we do not want developers overwhelmed by seeing every projects resources in their codebase.
 
-By using a sparse-checkout along with an `.env` file, we can programatically remove the extraneous repo content (from other portal projects) so that it is not bundled into the published image and is not littering the project developers local codebase.
+By using a `git sparse-checkout` [command](https://git-scm.com/docs/git-sparse-checkout) along with an `.env` file, we can programatically remove the extraneous repo content (from other portal projects) so that it is not bundled into the published image and is not littering the project developers local codebase.
 
 Additionally, switching between different portal projects is as simple as updating the `.env` file and rerunning the `sparse-checkout set ...` command (explained below) to switch to the submodule folder you want to be used during development and container/image builds.
 
