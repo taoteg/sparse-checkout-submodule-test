@@ -14,7 +14,7 @@ Also, when in local development, we do not want developers overwhelmed by seeing
 
 By using a `git sparse-checkout` [command](https://git-scm.com/docs/git-sparse-checkout) along with an `.env` file, we can programatically remove the extraneous repo content (from other portal projects) so that it is not bundled into the published image and is not littering the project developers local codebase.
 
-Additionally, switching between different portal projects is as simple as updating the `.env` file and rerunning the `sparse-checkout set ...` command (explained below) to switch to the submodule folder you want to be used during development and container/image builds.
+Additionally, switching between different portal projects is as simple as updating the `.env` file and rerunning the `git sparse-checkout set ...` command (explained below) to switch to the submodule folder you want to be used during development and container/image builds.
 
 ## Demo
 
@@ -93,7 +93,7 @@ $ tree
 └── project.env
 ```
 
-For firther evidence of the ease of swithing projects, update the `project.env` file and reapply the sparse-checkout command to see only the new project folders.
+For firther evidence of the ease of swithing projects, update the `project.env` file and reapply the `git sparse-checkout set ...` command to see only the new project folders.
 
 ```
 $ rm project.env
@@ -124,6 +124,6 @@ This process would allow for the proposed unified Submodule repository structure
 
 A single repo can be maintained privately that holds a top-level directory for every portal project (both full portals and SAD CMS sites). All resources for a project can be placed into the predesignated directory structure for that project.
 
-Jenkins can then be pointed at a single repo for ALL submodule content, yet still filter out only what it needs during builds, publishing and depoyments. 
+Jenkins can then be pointed at a single repo for ALL submodule content, yet still filter out only what it needs during builds, publishing and depoyments.
 
 The same goes for the local developers.
