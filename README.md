@@ -93,4 +93,37 @@ $ tree
 └── project.env
 ```
 
-This process would allow for the proposed unified Submodule repository structure to be utilized while allowing another level of contextual isolation during development and publishing phases. A single private repo can be maintained privately that hods a top-level directory for every portal project (both full portals and SAD CMS sites). All resources for a project can be placed into the predesignated directory structure for that project. Jenkins can then be pointed at a single repo for ALL submodule content, yet still filter out only what it needs during builds, publishing and depoyments. The same goes for the local developers.
+For firther evidence of the ease of swithing projects, update the `project.env` file and reapply the sparse-checkout command to see only the new project folders.
+
+```
+$ rm project.env
+$ touch project.env
+$ echo "not-in-sparse" >> project.env
+$ git sparse-checkout set --stdin < project.env
+$ tree
+.
+├── not-in-sparse
+│   └── test.txt
+└── project.env
+```
+
+This process would allow for the proposed unified Submodule repository structure to be utilized (below) while allowing another level of contextual isolation during development and publishing phases.
+
+```
+# git@github.com:TACC/per-project-repo.git
+​
+/per-project-repo/
+    README.md
+    |---/devops
+        |---/ other subdirs...
+    |---/customization
+        |---/ other subdirs...
+    ...
+
+```
+
+A single repo can be maintained privately that holds a top-level directory for every portal project (both full portals and SAD CMS sites). All resources for a project can be placed into the predesignated directory structure for that project.
+
+Jenkins can then be pointed at a single repo for ALL submodule content, yet still filter out only what it needs during builds, publishing and depoyments. 
+
+The same goes for the local developers.
