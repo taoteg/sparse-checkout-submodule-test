@@ -39,6 +39,7 @@ $ tree
     └── test.txt
 
 # Add a project.env file to repo root.
+# This file is untracked (see .gitignore).
 $ touch project.env
 
 # Populate the project.env file like so:
@@ -76,7 +77,7 @@ Now you can build your images/containers with ONLY the targeted submodule presen
 # To see the repo files again, disable the sparse-checkout.
 $ git sparse-checkout disable
 
-# They are all back (plus your new project.env file):
+# All files are now back:
 $ tree
 .
 ├── also-not-in-sparse
